@@ -15,9 +15,7 @@ observed performance differences.
 
 The naive kernel assigns one CUDA thread to each output element of matrix `C`.
 
-For:
-
-C = A × B
+For C = A × B,
 
 each thread computes one dot product by iterating over the inner K dimension and
 reading the required elements of A and B during the computation.
@@ -67,6 +65,8 @@ dimensions of this one thread per output design.
 To isolate the effect of shared-memory tiling more carefully, both kernels were
 run with the same 16×16 thread-block configuration across several square matrix
 sizes.
+
+<img src = "plots/gemm_scaling.png" width="60%" align="left"/>
 
 | N | Naive (ms) | Tiled (ms) | Naive (GFLOP/s) | Tiled (GFLOP/s) | Speedup |
 |---:|---:|---:|---:|---:|---:|
